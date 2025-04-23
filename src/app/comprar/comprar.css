@@ -1,0 +1,39 @@
+.validate-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #d4af37 0%, #121212 100%);
+  padding: 1rem;
+  color: white;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(0, 0, 0, 0.3);
+  border-left-color: #d4af37;
+  border-radius: 50%;
+  margin: 0 auto;
+  animation: spin 1s linear infinite;
+}
+
+.success-spinner {
+  border-left-color: #f5cc3d;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.invalid-access {
+  border-top: 4px solid #ef4444;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.valid-access {
+  border-top: 4px solid #d4af37;
+  background-color: rgba(0, 0, 0, 0.7);
+} 

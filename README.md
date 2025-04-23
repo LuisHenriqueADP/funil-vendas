@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Funil de Vendas (Sales Funnel)
 
-## Getting Started
+Este projeto é um exemplo de um funil de vendas simples com três etapas principais:
 
-First, run the development server:
+1. **Landing Page**: Página de apresentação do produto
+2. **Validação de Compra**: Simulação de processo de compra com verificação de token
+3. **Área de Membro**: Página protegida com acesso ao produto
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Estrutura do Projeto
+
+```
+src/
+├── app/
+│   ├── page.tsx (Landing Page)
+│   ├── page.css (Estilos da Landing Page)
+│   ├── comprar/
+│   │   ├── page.tsx (Página de validação de compra)
+│   │   └── comprar.css (Estilos da página de compra)
+│   └── acesso/
+│       ├── page.tsx (Página de acesso ao produto)
+│       └── acesso.css (Estilos da página de acesso)
+├── components/
+│   └── ui/ (Componentes do shadcn/ui)
+└── lib/
+    └── utils.ts (Utilitários)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tecnologias Utilizadas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Next.js (App Router)
+- React
+- TypeScript
+- Tailwind CSS
+- Shadcn/UI
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Como Funciona
 
-## Learn More
+1. O usuário visita a Landing Page e clica em "Comprar Agora"
+2. É redirecionado para a página de compra com um token de acesso na URL (`?token=abc123`)
+3. Se o token for válido, o acesso é liberado e o usuário é redirecionado para a área de membros
+4. O acesso permanece válido por 24 horas usando localStorage
 
-To learn more about Next.js, take a look at the following resources:
+## Como Executar
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+# Instalar dependências
+npm install
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Iniciar servidor de desenvolvimento
+npm run dev
 
-## Deploy on Vercel
+# Construir para produção
+npm run build
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Iniciar servidor de produção
+npm start
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Acesse a aplicação em http://localhost:3000
