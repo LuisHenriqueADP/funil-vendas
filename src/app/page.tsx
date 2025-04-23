@@ -49,8 +49,8 @@ export default function Home() {
                   Oferta por tempo limitado!
                 </h3>
                 <p className="text-lg mb-6">
-                  <span className="line-through text-muted-foreground">R$ 997,00</span>{" "}
-                  <span className="font-bold text-2xl text-green-600">R$ 497,00</span>
+                  <span className="line-through text-muted-foreground">R$ 1000000000,00</span>{" "}
+                  <span className="font-bold text-2xl text-green-600">R$ 00,01</span>
                 </p>
                 <Link href="/comprar?token=abc123" passHref>
                   <Button size="lg" className="buy-button">

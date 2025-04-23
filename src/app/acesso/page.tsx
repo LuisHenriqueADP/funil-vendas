@@ -86,7 +86,7 @@ export default function AcessoPage() {
     <div className="access-container">
       <Card className="product-card">
         <CardHeader>
-          <CardTitle>Curso Premium: Marketing Digital</CardTitle>
+          <CardTitle>Curso Premium: Como passar no teste técnico da Inove Corp</CardTitle>
           <CardDescription>Seu acesso foi liberado com sucesso!</CardDescription>
         </CardHeader>
         
@@ -98,7 +98,7 @@ export default function AcessoPage() {
               <div className="download-item">
                 <div className="download-icon">📚</div>
                 <div className="download-info">
-                  <h3>Módulo 1: Introdução ao Marketing Digital</h3>
+                  <h3>Módulo 1: Introdução a historia da inove corp</h3>
                   <Link href="#" className="download-link">
                     Baixar Material (PDF)
                   </Link>
@@ -108,7 +108,7 @@ export default function AcessoPage() {
               <div className="download-item">
                 <div className="download-icon">🎬</div>
                 <div className="download-info">
-                  <h3>Vídeo-aula: Estratégias de Tráfego Pago</h3>
+                  <h3>Vídeo-aula: Programando pra entrar na inove corp</h3>
                   <Link href="#" className="download-link">
                     Assistir Agora
                   </Link>
@@ -118,7 +118,7 @@ export default function AcessoPage() {
               <div className="download-item">
                 <div className="download-icon">📝</div>
                 <div className="download-info">
-                  <h3>Planilha de Métricas</h3>
+                  <h3>Planilha para rotina de estudo</h3>
                   <Link href="#" className="download-link">
                     Baixar (Excel)
                   </Link>
