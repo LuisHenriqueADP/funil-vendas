@@ -38,7 +38,9 @@ src/
 1. O usuário visita a Landing Page e clica em "Comprar Agora"
 2. É redirecionado para a página de compra com um token de acesso na URL (`?token=abc123`)
 3. Se o token for válido, o acesso é liberado e o usuário é redirecionado para a área de membros
-4. O acesso permanece válido por 24 horas usando localStorage
+4. Se não, vai mostrar "acesso negado" podendo ser testado com a seguinte URL : http://localhost:3000/comprar?token=123456
+5. Ao apertar em "voltar para home" acesso permanece válido por 24 horas usando localStorage podendo ir pra pagina de acesso sem token
+6. Ao apertar em sair, o acesso é automaticamente removido
 
 ## Como Executar
 
