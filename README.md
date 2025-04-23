@@ -42,6 +42,20 @@ src/
 5. Ao apertar em "voltar para home" acesso permanece válido por 24 horas usando localStorage podendo ir pra pagina de acesso sem token
 6. Ao apertar em sair, o acesso é automaticamente removido
 
+## Simulação de envio para backend/Zapier
+
+ const onSubmit = (data: FormData) => {
+     Simulação de envio para backend/Zapier
+    console.log("Dados enviados:", data);
+    setFormSubmitted(true); 
+    
+    // Em uma aplicação real, aqui você enviaria os dados para seu backend ou Zapier
+    // fetch('/api/submit-form', {
+    //   method: 'POST',
+    //   body: JSON.stringify(data)
+    // });
+  };
+
 ## Como Executar
 
 ```bash
