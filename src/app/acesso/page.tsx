@@ -1,14 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import Link from "next/link";
-import { useForm } from "react-hook-form";
-import "./acesso.css";
+import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import Link from "next/link"
+import { useForm } from "react-hook-form"
+import "./acesso.css"
 
 const VALID_TOKEN = "abc123";
 
@@ -23,7 +23,7 @@ export default function AcessoPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
-  // React Hook Form
+
   const form = useForm<FormData>({
     defaultValues: {
       name: "",
@@ -79,7 +79,7 @@ export default function AcessoPage() {
   }
 
   if (!isAuthorized) {
-    return null; // Redirecionando na useEffect, não precisa renderizar nada aqui
+    return null;
   }
 
   return (

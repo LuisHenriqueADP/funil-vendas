@@ -1,11 +1,11 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import "../comprar/comprar.css";
+import { useRouter, useSearchParams } from "next/navigation"
+import { useEffect, useState } from "react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
+import "../comprar/comprar.css"
 
 const VALID_TOKEN = "abc123";
 
@@ -20,11 +20,11 @@ export default function ComprarPage() {
     
     if (token === VALID_TOKEN) {
       setIsValid(true);
-      // Armazenar token no localStorage para acesso por 24h
+
       localStorage.setItem("productAccessToken", VALID_TOKEN);
       localStorage.setItem("tokenExpiry", String(Date.now() + 24 * 60 * 60 * 1000));
       
-      // Redirecionar para a página de acesso após validação
+
       setTimeout(() => {
         router.push("/acesso");
       }, 2000);
