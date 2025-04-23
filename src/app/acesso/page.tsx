@@ -19,10 +19,10 @@ interface FormData {
 
 export default function AcessoPage() {
   const router = useRouter();
+  const [isClient, setIsClient] = useState(false);
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [formSubmitted, setFormSubmitted] = useState(false);
-
 
   const form = useForm<FormData>({
     defaultValues: {
@@ -32,22 +32,35 @@ export default function AcessoPage() {
   });
 
   useEffect(() => {
-    checkAuthorization();
+    setIsClient(true);
   }, []);
 
+  useEffect(() => {
+    if (isClient) {
+      checkAuthorization();
+    }
+  }, [isClient]);
+
   const checkAuthorization = () => {
-    const storedToken = localStorage.getItem("productAccessToken");
-    const tokenExpiry = localStorage.getItem("tokenExpiry");
-    
-    const isValid = 
-      storedToken === VALID_TOKEN && 
-      tokenExpiry && 
-      parseInt(tokenExpiry) > Date.now();
-    
-    setIsAuthorized(!!isValid);
-    setIsLoading(false);
-    
-    if (!isValid) {
+    try {
+      const storedToken = localStorage.getItem("productAccessToken");
+      const tokenExpiry = localStorage.getItem("tokenExpiry");
+      
+      const isValid = 
+        storedToken === VALID_TOKEN && 
+        tokenExpiry && 
+        parseInt(tokenExpiry) > Date.now();
+      
+      setIsAuthorized(!!isValid);
+      setIsLoading(false);
+      
+      if (!isValid) {
+        router.push("/");
+      }
+    } catch (e) {
+      console.error("Erro ao acessar localStorage:", e);
+      setIsAuthorized(false);
+      setIsLoading(false);
       router.push("/");
     }
   };
@@ -65,12 +78,16 @@ export default function AcessoPage() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("productAccessToken");
-    localStorage.removeItem("tokenExpiry");
+    try {
+      localStorage.removeItem("productAccessToken");
+      localStorage.removeItem("tokenExpiry");
+    } catch (e) {
+      console.error("Erro ao acessar localStorage:", e);
+    }
     router.push("/");
   };
 
-  if (isLoading) {
+  if (!isClient || isLoading) {
     return (
       <div className="access-container">
         <div className="spinner"></div>

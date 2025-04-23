@@ -12,30 +12,39 @@ const VALID_TOKEN = "abc123";
 export default function ComprarPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [isClient, setIsClient] = useState(false);
   const [isValidating, setIsValidating] = useState(true);
   const [isValid, setIsValid] = useState(false);
 
   useEffect(() => {
-    const token = searchParams.get("token");
-    
-    if (token === VALID_TOKEN) {
-      setIsValid(true);
+    setIsClient(true);
+  }, []);
 
-      localStorage.setItem("productAccessToken", VALID_TOKEN);
-      localStorage.setItem("tokenExpiry", String(Date.now() + 24 * 60 * 60 * 1000));
+  useEffect(() => {
+    if (isClient) {
+      const token = searchParams.get("token");
       
-
-      setTimeout(() => {
-        router.push("/acesso");
-      }, 2000);
-    } else {
-      setIsValid(false);
+      if (token === VALID_TOKEN) {
+        setIsValid(true);
+        try {
+          localStorage.setItem("productAccessToken", VALID_TOKEN);
+          localStorage.setItem("tokenExpiry", String(Date.now() + 24 * 60 * 60 * 1000));
+        } catch (e) {
+          console.error("Erro ao acessar localStorage:", e);
+        }
+        
+        setTimeout(() => {
+          router.push("/acesso");
+        }, 2000);
+      } else {
+        setIsValid(false);
+      }
+      
+      setIsValidating(false);
     }
-    
-    setIsValidating(false);
-  }, [searchParams, router]);
+  }, [isClient, searchParams, router]);
 
-  if (isValidating) {
+  if (!isClient || isValidating) {
     return (
       <div className="validate-container">
         <Card className="w-full max-w-md">
