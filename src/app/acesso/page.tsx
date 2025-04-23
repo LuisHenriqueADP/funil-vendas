@@ -31,16 +31,6 @@ export default function AcessoPage() {
     }
   });
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  useEffect(() => {
-    if (isClient) {
-      checkAuthorization();
-    }
-  }, [isClient]);
-
   const checkAuthorization = () => {
     try {
       const storedToken = localStorage.getItem("productAccessToken");
@@ -64,6 +54,16 @@ export default function AcessoPage() {
       router.push("/");
     }
   };
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (isClient) {
+      checkAuthorization();
+    }
+  }, [isClient, checkAuthorization, router]);
 
   const onSubmit = (data: FormData) => {
     // Simulação de envio para backend/Zapier

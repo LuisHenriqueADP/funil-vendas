@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useEffect, useState, Suspense } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
@@ -9,7 +9,7 @@ import "../comprar/comprar.css"
 
 const VALID_TOKEN = "abc123";
 
-export default function ComprarPage() {
+function ComprarPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isClient, setIsClient] = useState(false);
@@ -96,5 +96,27 @@ export default function ComprarPage() {
         </CardContent>
       </Card>
     </div>
+  );
+}
+
+export default function ComprarPage() {
+  return (
+    <Suspense fallback={
+      <div className="validate-container">
+        <Card className="w-full max-w-md">
+          <CardHeader>
+            <CardTitle className="text-center">Carregando...</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-center">
+              <div className="spinner"></div>
+              <p className="mt-4">Carregando, aguarde um momento...</p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    }>
+      <ComprarPageContent />
+    </Suspense>
   );
 } 
